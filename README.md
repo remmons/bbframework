@@ -1,2 +1,3 @@
-# bbframework
-A lightweight pub sub framework for Backbone
+```
+webpack ./src/js/main.js ./dist/js/bundle.js
+```
