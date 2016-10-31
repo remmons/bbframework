@@ -1,20 +1,30 @@
-define(['underscore', 'framework/base-view'], function (_, BaseView) {
+define([
+    'underscore',
+    'framework/base-view',
+    'shared/placeholder/templates/placeholder.hbs'
+], function (_, BaseView, template) {
     return BaseView.extend({
+        el: '#label-container',
 
         customEvents: {
             'page:scroll-after': 'handleScroll'
         },
 
         initialize: function someOtherModuleInitialize () {
-            //_.bindAll(this, 'someEvent');
+            this.render(new Date());
         },
 
-        render: function () {
-            //render the module
+        render: function (timestamp) {
+            var html = template({
+                type: 'notice',
+                label: 'Notice, I was last updated at ' + timestamp
+            });
+
+            this.$el.html(html);
         },
 
         handleScroll: function () {
-            console.log('scroll handler from shared module', new Date().getTime());
+            this.render(new Date());
         }
 
     });

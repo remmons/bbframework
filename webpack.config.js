@@ -1,8 +1,8 @@
 var path = require('path');
-var webpack = require("webpack");
+var webpack = require('webpack');
 
 module.exports = {
-    context: __dirname + "/src/js",
+    context: __dirname + '/src/js',
 
     resolve: {
         root: [
@@ -11,16 +11,37 @@ module.exports = {
     },
 
     entry: {
-        app: "main",
-        base: ["jquery", "underscore", "backbone", "framework"],
+        app: 'main',
+        base: ['jquery', 'underscore', 'backbone', 'framework'],
     },
 
     output: {
-        path: __dirname + "/dist/js",
-        filename: "bundle.js"
+        path: __dirname + '/dist/js',
+        filename: '[name].js',
+        sourceMapFilename: '[file].map'
+    },
+
+    module: {
+        loaders: [
+            { test: /\.hbs$/, loader: "handlebars-loader" }
+        ]
     },
 
     plugins: [
-        new webpack.optimize.CommonsChunkPlugin("base", "base.bundle.js")
+        new webpack.optimize.CommonsChunkPlugin('base', 'base.js'),
+        new webpack.optimize.UglifyJsPlugin({
+            debug: true,
+            minimize: true,
+            sourceMap: true,
+            output: {
+                comments: false
+            },
+            compressor: {
+                warnings: false
+            }
+        }),
+        new webpack.SourceMapDevToolPlugin({
+            filename: '[file].map'
+        })
     ]
 };

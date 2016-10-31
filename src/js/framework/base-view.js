@@ -3,7 +3,7 @@ define(['underscore', 'backbone', './base-mixin', './page-manager'], function (_
     var originalDelegation = Backbone.View.prototype.delegateEvents;
     var originalUnDelegation = Backbone.View.prototype.undelegateEvents;
 
-    return Backbone.View.extend(
+    var BaseView = Backbone.View.extend(
         _.extend({}, base, {
 
             /**
@@ -56,8 +56,9 @@ define(['underscore', 'backbone', './base-mixin', './page-manager'], function (_
                     }
                 }
             }
-
         })
-
     );
+
+    return BaseView;
+
 });

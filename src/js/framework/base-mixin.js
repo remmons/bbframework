@@ -1,6 +1,9 @@
-define(['underscore', 'backbone'], function (_, Backbone) {
+define([
+    'underscore',
+    'backbone'
+], function (_, Backbone) {
 
-    return {
+    var BaseMixin = {
 
         /**
          * @private
@@ -116,6 +119,7 @@ define(['underscore', 'backbone'], function (_, Backbone) {
                 this[type](args[0], args[1], args[2]);
             }
         },
-
     };
+
+    return BaseMixin;
 });

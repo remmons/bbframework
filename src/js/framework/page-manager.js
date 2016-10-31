@@ -1,6 +1,7 @@
 define(['underscore', 'backbone', 'jquery', './base-mixin'], function (_, Backbone, $, base) {
 
-    return Backbone.View.extend(
+    var PageManger = Backbone.View.extend(
+
         _.extend({}, base, {
 
             /**
@@ -124,10 +125,9 @@ define(['underscore', 'backbone', 'jquery', './base-mixin'], function (_, Backbo
                 if (key === 27) {
                     this.publish('page:key-esc');
                 }
-
             }
-
         })
-
     );
+
+    return PageManger;
 });
