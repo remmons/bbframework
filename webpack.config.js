@@ -12,7 +12,6 @@ module.exports = {
 
     entry: {
         app: 'main',
-        realtor: 'realtor',
         base: ['jquery', 'underscore', 'backbone', 'framework'],
     },
 

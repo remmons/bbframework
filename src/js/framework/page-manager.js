@@ -30,14 +30,6 @@ define(['underscore', 'backbone', 'jquery', './base-mixin'], function (_, Backbo
             throttleCount: 0,
 
             /**
-             * Keeps track if the DOM is ready
-             *
-             * @private
-             * @property isReady
-            **/
-            isReady: false,
-
-            /**
              * Kicks everything off on dom-ready
              *
              * @private
@@ -60,7 +52,6 @@ define(['underscore', 'backbone', 'jquery', './base-mixin'], function (_, Backbo
              * @method handlePageReady
             **/
             handlePageReady: function () {
-                this.isReady = true;
                 this.publish('page:ready');
                 this.$el.on('scroll', this.handleScroll);
                 this.$el.on('keydown', this.handleKeyDown);

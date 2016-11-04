@@ -1,4 +1,10 @@
-define(['underscore', 'backbone', './base-mixin', './page-manager'], function (_, Backbone, base, pageManager) {
+define('aardvark/base-view', [
+    'underscore',
+    'backbone',
+    'jquery',
+    './base-mixin',
+    './page-manager'
+], function (_, Backbone, $, base, pageManager) {
 
     var originalDelegation = Backbone.View.prototype.delegateEvents;
     var originalUnDelegation = Backbone.View.prototype.undelegateEvents;
@@ -9,10 +15,26 @@ define(['underscore', 'backbone', './base-mixin', './page-manager'], function (_
             /**
              * Loads the page manager
              *
-             * @private
+             * @public
              * @property pageManager
             **/
             pageManager: new pageManager(),
+
+            /**
+             * Placeholder for views that may define the handleDomReady method
+             *
+             * @public
+             * @property handleDomReady
+            **/
+            handleDomReady: undefined,
+
+            /**
+             * Loads the page manager
+             *
+             * @private
+             * @property _hasDomDelegated
+            **/
+            _hasDomDelegated: false,
 
             /**
              * EXTENDS BACKBONE
@@ -24,6 +46,18 @@ define(['underscore', 'backbone', './base-mixin', './page-manager'], function (_
             delegateEvents: function () {
                 originalDelegation.apply(this, arguments);
                 this.toggleCustomEvents('subscribe');
+
+                // adds handleDomReady
+                if (this.handleDomReady && !this._hasDomDelegated) {
+                    this._hasDomDelegated = true;
+
+                    if ($.isReady) {
+                        _.bindAll(this, 'handleDomReady');
+                        _.defer(this.handleDomReady);
+                    } else {
+                        this.subscribeOnce('page:ready', this.handleDomReady);
+                    }
+                }
 
                 return this;
             },

@@ -1,4 +1,4 @@
-define([
+define('aardvark/base-collection', [
     'underscore',
     './base-mixin'
 ], function (_, base) {
