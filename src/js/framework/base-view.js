@@ -1,4 +1,4 @@
-define('aardvark/base-view', [
+define([
     'underscore',
     'backbone',
     'jquery',
