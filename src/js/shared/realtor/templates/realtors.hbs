@@ -1,0 +1,7 @@
+{{#each data}}
+    <div class="person" data-id="{{id}}">
+        <h2 style="color: #{{../color}}">{{this.first}} {{this.last}}</h2>
+        <h3>{{this.address}}</h3>
+        <p>{{this.email}}</p>
+    </div>
+{{/each}}

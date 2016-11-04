@@ -7,7 +7,7 @@ define([
         el: '#label-container',
 
         customEvents: {
-            'page:scroll-after': 'handleScroll'
+            'page:scroll': 'handleScroll'
         },
 
         initialize: function someOtherModuleInitialize () {

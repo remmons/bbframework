@@ -13,40 +13,6 @@ define([
         _pubSub: _.extend({}, Backbone.Events),
 
         /**
-         * @private
-         *
-         * Store contating page view variables
-        **/
-        metaTagStore: {},
-
-        /**
-         * Gets a specific meta tag from the page collection
-         *
-         * @public
-         * @method getMeta
-         * @param name {String} The name of the meta tag that needs to be retrieved
-         * @return {String|Array} A string or an array of strings of meta tags on the page
-        **/
-        getMeta: function (name) {
-            return this.metaTagStore[name];
-        },
-
-        /**
-         * Sets a specific meta tag
-         *
-         * @public
-         * @method setMeta
-         * @param name {String} The name of the meta tag
-         * @param value {String} The value of the meta tag
-         * @param [overwrite=true] {String} A flag that overwrites the current value
-        **/
-        setMeta: function (name, value, overwrite) {
-            if (!this.metaTagStore[name] || overwrite !== false) {
-                this.metaTagStore[name] = value;
-            }
-        },
-
-        /**
          * Trigger events across all modules
          *
          * @public
