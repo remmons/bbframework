@@ -4,21 +4,13 @@ define([
     'jquery',
     './base-mixin',
     './page-manager'
-], function (_, Backbone, $, base, pageManager) {
+], function (_, Backbone, $, base) {
 
     var originalDelegation = Backbone.View.prototype.delegateEvents;
     var originalUnDelegation = Backbone.View.prototype.undelegateEvents;
 
     var BaseView = Backbone.View.extend(
         _.extend({}, base, {
-
-            /**
-             * Loads the page manager
-             *
-             * @public
-             * @property pageManager
-            **/
-            pageManager: new pageManager(),
 
             /**
              * Placeholder for views that may define the handleDomReady method

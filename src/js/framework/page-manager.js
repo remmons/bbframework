@@ -120,5 +120,5 @@ define(['underscore', 'backbone', 'jquery', './base-mixin'], function (_, Backbo
         })
     );
 
-    return PageManger;
+    return new PageManger();
 });
